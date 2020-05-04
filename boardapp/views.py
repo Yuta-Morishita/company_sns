@@ -4,6 +4,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
 from .models import Board
 from django.contrib.auth.decorators import login_required
+from django.views import generic
+from django.urls import reverse_lazy
 
 
 def signupfunc(request):
@@ -67,3 +69,10 @@ def readfunc(request, pk):
         post.readtext = post.readtext + ' ' + post2
         post.save()
         return redirect('list')
+
+
+class CreateView(generic.CreateView):
+    template_name = 'boardapp/create.html'
+    model = Board
+    fields = ('title', 'content', 'author', 'images')
+    success_url = reverse_lazy('list')
