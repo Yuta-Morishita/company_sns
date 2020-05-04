@@ -26,6 +26,8 @@
     {% if object.images %}
     <p><img src="{{ object.images.url }}" width="300" alt=""></p>
     {% endif %}
+
+
     <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいねする</a>
     <a href="{% url 'read' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">既読にする</a>
 </div>

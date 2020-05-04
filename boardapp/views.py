@@ -6,6 +6,7 @@ from .models import Board
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.urls import reverse_lazy
+from django.contrib import messages
 
 
 def signupfunc(request):
@@ -54,9 +55,14 @@ def detailfunc(request, pk):
 
 def goodfunc(request, pk):
     post = Board.objects.get(pk=pk)
-    post.good = post.good + 1
-    post.save()
-    return redirect('list')
+    post2 = request.user.get_username()
+    if post2 in post.goodtext:
+        return redirect('list')
+    else:
+        post.good += 1
+        post.goodtext = post.goodtext + ' ' + post2
+        post.save()
+        return redirect('list')
 
 
 def readfunc(request, pk):
@@ -74,5 +80,11 @@ def readfunc(request, pk):
 class CreateView(generic.CreateView):
     template_name = 'boardapp/create.html'
     model = Board
-    fields = ('title', 'content', 'author', 'images', 'read', 'readtext')
+    fields = ('title', 'content', 'author', 'images', 'read', 'goodtext', 'readtext')
     success_url = reverse_lazy('list')
+
+
+class ReadView(generic.ListView):
+    template_name = 'boardapp/readlist.html'
+    model = Board
+    context_object_name = 'readtexts'

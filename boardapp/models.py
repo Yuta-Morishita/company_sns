@@ -7,6 +7,7 @@ class Board(models.Model):
     author = models.CharField(max_length=100)
     images = models.ImageField(null=True, blank=True)
     good = models.IntegerField(null=True, blank=True, default=0)
+    goodtext = models.CharField(max_length=200, null=True, blank=True)
     read = models.IntegerField(null=True, blank=True, default=0)
     readtext = models.CharField(max_length=200, null=True, blank=True)
 
