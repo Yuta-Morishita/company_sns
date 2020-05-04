@@ -15,11 +15,14 @@
 
 
 {% block content %}
+
+{% for item in object_list %}
 <div class="container alert alert-success" role="alert">
-    <p>タイトル：</p>
-    <p>投稿者：</p>
+    <p>タイトル：{{ item.title }}</p>
+    <p>投稿者：{{ item.author }}</p>
     <a href="#" class="btn btn-primary" role="button" aria-pressed="true">Primary link</a>
     <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Link</a>
 </div>
-
+{% endfor %}
+<a href="{% url 'logout' %}">ログアウト</a>
 {% endblock content %}
