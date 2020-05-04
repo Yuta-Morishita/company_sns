@@ -10,5 +10,4 @@ urlpatterns = [
     path('good/<int:pk>/', views.goodfunc, name='good'),
     path('read/<int:pk>/', views.readfunc, name='read'),
     path('create/', views.CreateView.as_view(), name='create'),
-    path('readlist/', views.ReadView.as_view(), name='readlist'),
 ]
