@@ -30,3 +30,7 @@ def loginfunc(request):
             return redirect('login')
 
     return render(request, 'boardapp/login.html')
+
+
+def listfunc(request):
+    return render(request, 'boardapp/list.html')
