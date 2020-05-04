@@ -6,7 +6,6 @@ from .models import Board
 from django.contrib.auth.decorators import login_required
 from django.views import generic
 from django.urls import reverse_lazy
-from django.contrib import messages
 
 
 def signupfunc(request):
@@ -18,8 +17,8 @@ def signupfunc(request):
             return render(request, 'boardapp/signup.html', {'error': 'このユーザーは登録されています'})
         except:
             user = User.objects.create_user(username2, '', password2)
-            return render(request, 'boardapp/signup.html', {'some': 100})
-    return render(request, 'boardapp/signup.html', {'some': 100})
+            return redirect('login')
+    return render(request, 'boardapp/signup.html')
 
 
 def loginfunc(request):
