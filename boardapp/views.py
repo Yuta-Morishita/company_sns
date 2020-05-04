@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import redirect
+from .models import Board
+from django.contrib.auth.decorators import login_required
 
 
 def signupfunc(request):
@@ -25,12 +27,19 @@ def loginfunc(request):
 
         if user is not None:
             login(request, user)
-            return redirect('signup')
+            return redirect('list')
         else:
             return redirect('login')
 
     return render(request, 'boardapp/login.html')
 
 
+@login_required
 def listfunc(request):
-    return render(request, 'boardapp/list.html')
+    object_list = Board.objects.all()
+    return render(request, 'boardapp/list.html', {'object_list': object_list})
+
+
+def logoutfunc(request):
+    logout(request)
+    return redirect('login')
