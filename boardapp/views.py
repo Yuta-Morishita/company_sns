@@ -82,9 +82,3 @@ class CreateView(generic.CreateView):
     model = Board
     fields = ('title', 'content', 'author', 'images', 'read', 'goodtext', 'readtext')
     success_url = reverse_lazy('list')
-
-
-class ReadView(generic.ListView):
-    template_name = 'boardapp/readlist.html'
-    model = Board
-    context_object_name = 'readtexts'
