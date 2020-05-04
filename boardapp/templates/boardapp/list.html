@@ -21,7 +21,7 @@
     <p>タイトル：<a href="{% url 'detail' item.pk %}">{{ item.title }}</p></a>
     <p>投稿者：{{ item.author }}</p>
     <a href="#" class="btn btn-primary" role="button" aria-pressed="true">いいね{{ item.good }}</a>
-    <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">Link</a>
+    <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">既読{{ item.read }}</a>
 </div>
 {% endfor %}
 <a href="{% url 'logout' %}">ログアウト</a>
