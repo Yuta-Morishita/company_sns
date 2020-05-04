@@ -14,6 +14,7 @@
         <p>内容：<input type="text" name="content"></p>
         <p>画像：<input type="file" name="images"></p>
         <input type="hidden" name="author" value="{{ user.username }}">
+        <input type="hidden" name="goodtext" value="{{ user.username }}">
         <input type="hidden" name="readtext" value="{{ user.username }}">
         <input type="submit" value="作成する">
     </form>
