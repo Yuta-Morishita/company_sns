@@ -1,16 +1,25 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block customcss %}
+<link rel="stylesheet" type="text/css" href="{% static 'mystyle.css' %}">
+{% endblock customcss %}
 
 {% block content %}
 
 {% if user.is_authenticated %}
-<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
-    <p>タイトル：<input type="text" name="title"></p>
-    <p>内容：<input type="text" name="content"></p>
-    <p>画像：<input type="file" name="images"></p>
-    <input type="hidden" name="author" value="{{ user.username }}">
-    <input type="submit" value="作成する">
-</form>
+<div class="create-top container alert alert-warning" role="alert">
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+        <p>タイトル：<input type="text" name="title"></p>
+        <p>内容：<input type="text" name="content"></p>
+        <p>画像：<input type="file" name="images"></p>
+        <input type="hidden" name="author" value="{{ user.username }}">
+        <input type="hidden" name="readtext" value="{{ user.username }}">
+        <input type="submit" value="作成する">
+    </form>
+</div>
+<div class="container"><a href="{% url 'list' %}" class="btn btn-primary" role="button"
+        aria-pressed="true">社内掲示板の一覧に戻る</a></div>
 {% else %}
 ログインしてください
 {% endif %}

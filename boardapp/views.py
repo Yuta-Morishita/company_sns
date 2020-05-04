@@ -74,5 +74,5 @@ def readfunc(request, pk):
 class CreateView(generic.CreateView):
     template_name = 'boardapp/create.html'
     model = Board
-    fields = ('title', 'content', 'author', 'images')
+    fields = ('title', 'content', 'author', 'images', 'read', 'readtext')
     success_url = reverse_lazy('list')
