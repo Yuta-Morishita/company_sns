@@ -7,5 +7,6 @@ urlpatterns = [
     path('list/', views.listfunc, name='list'),
     path('logout/', views.logoutfunc, name='logout'),
     path('detail/<int:pk>/', views.detailfunc, name='detail'),
-    path('good/<int:pk>/', views.goodfunc, name='good')
+    path('good/<int:pk>/', views.goodfunc, name='good'),
+    path('read/<int:pk>/', views.readfunc, name='read'),
 ]
