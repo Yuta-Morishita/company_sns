@@ -1,14 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block customcss %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'mystyle.css' %}">
 {% endblock customcss %}
 
 
 {% block header %}
-<div class="container alert alert-primary" role="alert">
-    社内SNS
+<div class="top container alert alert-primary" role="alert">
+    <div>社内掲示板</div>
+    <div><a href="{% url 'logout' %}">ログアウト</a></div>
 </div>
 {% endblock header %}
 
@@ -24,5 +26,7 @@
     <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">既読{{ item.read }}</a>
 </div>
 {% endfor %}
-<a href="{% url 'logout' %}">ログアウト</a>
+<div class="container">
+    <a href="{% url 'create' %}" class="btn btn-danger" role="button" aria-pressed="true">新規投稿</a>
+</div>
 {% endblock content %}

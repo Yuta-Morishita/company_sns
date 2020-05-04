@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 
 {% block customcss %}
-
+<link rel="stylesheet" type="text/css" href="{% static 'mystyle.css' %}">
 {% endblock customcss %}
 
 
 {% block header %}
-<div class="container alert alert-primary" role="alert">
+<div class="top container alert alert-primary" role="alert">
     個別投稿
 </div>
 {% endblock header %}
@@ -19,8 +21,15 @@
     <p>タイトル：{{ object.title }}</p>
     <p>投稿者：{{ object.author }}</p>
     <p>内容：{{ object.content }}</p>
+
+
+    {% if object.images %}
     <p><img src="{{ object.images.url }}" width="300" alt=""></p>
+    {% endif %}
     <a href="{% url 'good' object.pk %}" class="btn btn-primary" role="button" aria-pressed="true">いいねする</a>
     <a href="{% url 'read' object.pk %}" class="btn btn-secondary" role="button" aria-pressed="true">既読にする</a>
 </div>
+<div class="container"><a href="{% url 'list' %}" class="btn btn-primary" role="button"
+        aria-pressed="true">社内掲示板の一覧に戻る</a></div>
+
 {% endblock content %}
